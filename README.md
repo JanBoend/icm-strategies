@@ -1,5 +1,9 @@
 # icm-strategies
 
+![Python](https://img.shields.io/badge/python-3.10+-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Tests](https://img.shields.io/badge/tests-passing-brightgreen.svg)
+
 10 ICT-based systematic strategies across equities and FX. Walk-forward validated. Combined portfolio Sharpe 4.16.
 
 ---
