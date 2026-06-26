@@ -76,6 +76,10 @@ class FVGStrategy(BaseStrategy):
         Simulate trades on pre-built indicator dataframe.
         Position sizing: fixed risk_pct of equity per trade.
         Exit: take-profit at reward_ratio * risk, or stop at sl_buffer below FVG.
+
+        Note: entries use bar close price on the signal bar. In live trading,
+        entries would be placed at the next bar's open. This slightly inflates
+        backtest performance relative to live execution.
         """
         p         = self.params
         capital   = p["initial_capital"]
@@ -108,7 +112,9 @@ class FVGStrategy(BaseStrategy):
                     trades.append({**position, "exit": position["tp"], "pnl": pnl, "result": "TP"})
                     position = None
 
-            # Entry conditions
+            # Long-only: this implementation trades bullish FVGs only.
+            # Bearish FVG short entries are intentionally excluded —
+            # the equity bias provides a structural tailwind for longs.
             if (position is None
                     and row["in_session"]
                     and row["fvg_bull"]

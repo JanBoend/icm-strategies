@@ -93,13 +93,17 @@ class AMDStrategy(BaseStrategy):
                 if row["Low"] <= position["sl"]:
                     pnl = -position["risk_amt"]
                     capital += pnl
-                    trades.append({**position, "pnl": pnl, "result": "SL"})
+                    trades.append({**position, "exit": position["sl"], "pnl": pnl, "result": "SL"})
                     position = None
+                    swept_high = False
+                    swept_low  = False
                 elif row["High"] >= position["tp"]:
                     pnl = position["risk_amt"] * rr
                     capital += pnl
-                    trades.append({**position, "pnl": pnl, "result": "TP"})
+                    trades.append({**position, "exit": position["tp"], "pnl": pnl, "result": "TP"})
                     position = None
+                    swept_high = False
+                    swept_low  = False
 
             if row["in_sweep_window"] and not pd.isna(row["on_high"]):
                 if row["High"] > row["on_high"]:

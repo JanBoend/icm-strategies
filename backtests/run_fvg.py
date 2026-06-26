@@ -11,7 +11,7 @@ print("FVG Strategy — QQQ 15-minute backtest")
 print("Note: optimal parameters are not published. Defaults used here are illustrative.")
 
 ticker = "QQQ"
-raw = yf.download(ticker, start="2019-01-01", end="2024-12-31", interval="1h", progress=False)
+raw = yf.download(ticker, start="2024-01-01", end="2024-12-31", interval="15m", progress=False)
 htf = raw.resample("4h").last().dropna()
 
 strat = FVGStrategy()

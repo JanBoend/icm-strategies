@@ -98,6 +98,8 @@ class ORBStrategy(BaseStrategy):
                     and (capital - day_start) / day_start > -daily_lim):
 
                 buf = (sl_buf or 0) * row["atr"]
+                # Long breakouts only — short breakouts omitted intentionally.
+                # Upside breakouts have a stronger statistical edge on equity indices.
                 if row["Close"] > row["or_high"]:   # long breakout
                     sl  = row["or_low"] - buf
                     risk = row["Close"] - sl
