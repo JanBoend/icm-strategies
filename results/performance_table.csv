@@ -1,0 +1,11 @@
+strategy,instrument,ann_return,sharpe,max_drawdown,n_trades,wfo_pass_rate,wfo_mean_sharpe
+FVG,QQQ,0.1594,1.02,-0.1563,668,0.8125,0.98
+ORB,QQQ,0.1293,1.14,-0.0756,329,0.8125,1.30
+AMD,QQQ,0.1974,1.36,-0.082,400,0.9375,1.64
+AMD,EURUSD,0.1645,1.40,-0.0501,,,
+ORB,EURUSD,0.124,0.92,-0.0636,,,
+FVG,EURUSD,0.0733,0.65,-0.1243,,,
+iFVG,EURUSD,,1.80,,,
+iFVG,GBPUSD,,1.07,,,
+FVG,XAUUSD,0.0643,0.55,-0.0932,,,
+Portfolio (10-strategy),Multi,1.10,4.16,-0.0749,,,
