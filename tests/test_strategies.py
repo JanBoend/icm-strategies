@@ -1,4 +1,7 @@
 """Smoke tests for strategy classes: interface, indicator building, backtest execution."""
+import sys, os
+sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
+
 import numpy as np
 import pandas as pd
 import pytest
