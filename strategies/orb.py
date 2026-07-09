@@ -44,9 +44,10 @@ class ORBStrategy(BaseStrategy):
         or_open = pd.Timestamp("13:30").time()
         or_end  = (pd.Timestamp("13:30") + pd.Timedelta(minutes=range_min)).time()
 
-        or_data = df[
-            (df.index.time >= or_open) & (df.index.time < or_end)
-        ].groupby(df.index.date).agg(or_high=("High", "max"), or_low=("Low", "min"))
+        or_mask = (df.index.time >= or_open) & (df.index.time < or_end)
+        or_data = df[or_mask].groupby(df[or_mask].index.date).agg(
+            or_high=("High", "max"), or_low=("Low", "min")
+        )
 
         or_data.index = pd.to_datetime(or_data.index)
         df["date"]    = df.index.normalize()
